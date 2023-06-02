@@ -1,0 +1,112 @@
+<section class="upload-section">
+  <div class="container p-5">
+    <!-- For demo purpose -->
+    <div class="row mb-5 text-center text-white">
+      <div class="col-lg-10 mx-auto">
+        <h1 class="display-4" *ngIf="!this.localStorgeDet.registrationId">Upload Marksheet </h1>
+        <h1 class="display-4" *ngIf="this.localStorgeDet.registrationId">Welcome {{studentDetails?.Name}}</h1>
+        <p class="lead"></p>
+      </div>
+    </div>
+    <!-- End -->
+
+
+    <div class="row">
+      <div class="col-lg-5 mx-auto" *ngIf="!this.localStorgeDet.registrationId">
+        <div class="p-5 bg-white shadow rounded-lg"><img
+            src="https://res.cloudinary.com/mhmd/image/upload/v1557366994/img_epm3iz.png" alt="" width="200"
+            class="d-block mx-auto mb-4 rounded-pill">
+
+          <div>
+            <h6 class="text-center mb-4 text-muted">
+              You can upload a file by using below button
+            </h6>
+
+            <!-- Custom bootstrap upload file-->
+            <label for="fileUpload" class="file-upload btn btn-primary btn-block rounded-pill shadow"
+              style="width: 100%;"><i class="fa fa-upload mr-2" style="margin-right: 1em;"></i>Browse for file ...
+              <!-- <input id="fileUpload" type="file"> -->
+              <input type="file" id="fileUpload" (change)="uploadExcel($event)" />
+            </label>
+            <!-- End -->
+          </div>
+
+          <div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-lg-7  mx-auto" *ngIf="this.localStorgeDet.registrationId">
+        <div class="p-5 bg-white shadow rounded-lg"><img
+            src="https://res.cloudinary.com/mhmd/image/upload/v1557366994/img_epm3iz.png" alt="" width="200"
+            class="d-block mx-auto mb-4 rounded-pill">
+
+          <div class="student-detail-view">
+            <h3 class="text-center mb-1 text-primary">
+              St ANDREW’S MATRIC HR SEC SCHOOL
+            </h3>
+            <h4 class="text-center mb-1 text-primary">
+              RADHAPURAM
+            </h4>
+
+            <h4 class="text-center mb-1 mt-4 text-danger">First Monthly Test Mark Sheet</h4>
+            <div class="mt-3 mb-3">
+              <div class="stud-det">
+                <span>Name of Student </span>
+                <span>:</span>
+                <span>{{studentDetails?.Name}}</span>
+              </div>
+              <div class="stud-det">
+                <span>Standard</span>
+                <span>:</span>
+                <span>{{studentDetails?.Standard}}</span>
+              </div>
+              <div class="stud-det">
+                <span>Registration Number</span>
+                <span>:</span>
+                <span>{{studentDetails?.Registration_No}}</span>
+              </div>
+            </div>
+            <table class="table table-bordered mt-5 mb-5">
+              <thead>
+                <tr>
+                  <th scope="col">Subject</th>
+                  <th scope="col">Max Mark</th>
+                  <th scope="col">Obtained Mark</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let markDet of studentMarkDetails">
+                  <th scope="row">{{markDet.Subject}}</th>
+                  <td>{{markDet.Maxmark}}</td>
+                  <td>{{markDet.Obt_marks}}</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="stud-remark">
+              <span>You are </span>
+              <span></span>
+              <span
+                [ngStyle]="{'color' : studentDetails?.REMARK != 'FAIL' ? 'green' : 'red'}">{{studentDetails?.REMARK}}</span>
+            </div>
+            <div style="text-align: center;
+            font-size: 1.2em;" *ngIf="studentDetails?.REMARK != 'FAIL'">
+              <span>Rank</span>
+              <span>:</span>
+              <span>{{studentDetails?.RANK}}</span>
+            </div>
+            <div class="text-center mt-3 mb-3">
+              <button class="btn btn-success" (click)="createPdf()">Download Marksheet as PDF</button>
+            </div>
+            <div class="text-center mt-3 mb-3">
+              <button class="btn btn-primaty" (click)="logout()">Log Out</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

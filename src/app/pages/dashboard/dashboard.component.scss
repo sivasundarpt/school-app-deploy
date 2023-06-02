@@ -1,0 +1,57 @@
+/*
+*
+* ==========================================
+* CUSTOM UTIL CLASSES
+* ==========================================
+*
+*/
+
+.file-upload input[type="file"] {
+  display: none;
+}
+
+/*
+*
+* ==========================================
+* FOR DEMO PURPOSES
+* ==========================================
+*
+*/
+
+.upload-section {
+  background: #00b4db;
+  background: -webkit-linear-gradient(to right, #0083b0, #00b4db);
+  background: linear-gradient(to right, #0083b0, #00b4db);
+  height: 100vh;
+}
+
+.rounded-lg {
+  border-radius: 1rem;
+}
+
+.custom-file-label.rounded-pill {
+  border-radius: 50rem;
+}
+
+.custom-file-label.rounded-pill::after {
+  border-radius: 0 50rem 50rem 0;
+}
+
+.student-detail-view {
+  .stud-det {
+    display: grid;
+    grid-template-columns: 30% 5% 40%;
+    justify-content: right;
+    font-size: 1.2em;
+    color: #8d220a;
+  }
+  .stud-remark{
+    text-align: center;
+    span:first-child{
+      font-size: 1.2em;
+    }
+    span:last-child{
+      font-size: 1.5em;
+    }
+  }
+}
